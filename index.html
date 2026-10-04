@@ -44,12 +44,15 @@
   <script>
     const D=['월','화','수','목','금','토','일'];
     const dayReasons=['한 주의 시작이라 중요한 일정에도 단정하고 신뢰감 있는 인상을 줍니다.','움직임이 많은 날이라 편안함과 단정함을 함께 챙깁니다.','주중에는 안정적인 색 조합으로 업무에 집중하기 좋습니다.','주 후반에도 깔끔해 보이도록 균형 잡힌 조합을 고릅니다.','금요일에는 단정함을 지키면서 작은 변화를 더하기 좋습니다.','주말 일정에도 너무 격식 차리지 않으면서 말끔하게 보입니다.','가벼운 휴식과 외출에 편안하면서도 단정하게 어울립니다.'];
-    const trendAccents={
-      autumn:[['코발트 블루','#2f61ff','니트','블라우스'],['칠리 레드','#d83a38','양말','숄더백'],['로열 퍼플','#6d43a5','니트','스카프'],['사프란 옐로','#e7ab25','포켓스퀘어','니트'],['에메랄드 그린','#0d8a6a','니트 폴로','블라우스'],['주이시 피치','#f28e78','티셔츠','블라우스'],['버터 옐로','#f1d36b','셔츠','카디건']],
-      winter:[['사파이어 블루','#2459a6','터틀넥','니트'],['베리 레드','#b8324d','머플러','가방'],['아메시스트','#7850a9','넥타이','니트'],['아이스 블루','#9bc6e5','셔츠','블라우스'],['비비드 그린','#16845d','니트','카디건'],['로즈 핑크','#df7895','셔츠','블라우스'],['시트러스 옐로','#efc638','양말','스카프']],
-      spring:[['버터 옐로','#f1d36b','니트','카디건'],['아쿠아 블루','#38b9c4','셔츠','블라우스'],['코랄 핑크','#ef7f73','니트','블라우스'],['피스타치오','#a9c87b','셔츠','카디건'],['라일락','#9b80c7','니트','스카프'],['코발트 블루','#2f61ff','오버셔츠','블레이저'],['피치','#f3a37f','셔츠','블라우스']],
-      summer:[['라군 틸','#21a5a5','니트 폴로','블라우스'],['토마토 레드','#db4a3f','셔츠','가방'],['코발트 블루','#2f61ff','셔츠','블라우스'],['라임 그린','#9cbf32','폴로','니트 톱'],['탠저린','#ee8b32','셔츠','가방'],['푸시아','#c64a89','양말','스카프'],['스카이 블루','#71b8df','셔츠','셔츠']]
-    };
+    const trendAccents=[
+      {name:'코발트 블루',hex:'#2f61ff',men:'코발트 블루 니트',women:'코발트 블루 블라우스',image:'cobalt-blue'},
+      {name:'칠리 레드',hex:'#d83a38',men:'칠리 레드 니트',women:'칠리 레드 실크 블라우스',image:'chili-red'},
+      {name:'로열 퍼플',hex:'#6d43a5',men:'로열 퍼플 니트',women:'로열 퍼플 니트 톱',image:'royal-purple'},
+      {name:'사프란 옐로',hex:'#e7ab25',men:'사프란 옐로 니트',women:'사프란 옐로 블라우스',image:'saffron-yellow'},
+      {name:'에메랄드 그린',hex:'#0d8a6a',men:'에메랄드 그린 니트 폴로',women:'에메랄드 그린 블라우스',image:'emerald-green'},
+      {name:'주이시 피치',hex:'#f28e78',men:'주이시 피치 니트',women:'주이시 피치 블라우스',image:'juicy-peach'},
+      {name:'버터 옐로',hex:'#f1d36b',men:'버터 옐로 옥스퍼드 셔츠',women:'버터 옐로 니트 카디건',image:'butter-yellow'}
+    ];
     const menData={
       '2026-9':{season:'초가을 · TRANSITION',temp:'18–27°C',summary:'한낮엔 가볍게, 아침저녁엔 재킷으로 온도 차를 조절합니다. 네이비와 담백한 뉴트럴에 스웨이드 질감으로 가을의 시작을 더하세요.',palette:['#15253f','#e6e0d4','#b77a4a','#9eb6cc'],caps:['네이비 언컨 재킷','아이보리 니트 폴로','라이트 블루 셔츠','차콜 원턱 슬랙스','베이지 코튼 팬츠','초콜릿 스웨이드 로퍼','브라운 벨트','경량 우산'],trend:['어깨 패드가 약한 소프트 재킷으로 실루엣을 편안하게','팬츠는 슬림핏보다 한 치수 여유 있는 원턱 스트레이트','브라운 스웨이드 한 점으로 2026 가을의 풍부한 질감 추가'],days:[['네이비와 아이보리','네이비 재킷|아이보리 니트 폴로|차콜 원턱 슬랙스|브라운 로퍼','첫날은 실패 없는 대비'],['블루 톤온톤','라이트 블루 셔츠|네이비 슬랙스|블랙 더비','소매를 한 번 접어 가볍게'],['웜 뉴트럴','베이지 재킷|화이트 티셔츠|브라운 슬랙스|스웨이드 로퍼','질감으로 계절감 추가'],['모던 그레이','차콜 셋업|하늘색 셔츠|블랙 로퍼','넥타이 없이 칼라만 정돈'],['프라이데이 폴로','딥그린 니트 폴로|그레이 슬랙스|브라운 로퍼','작은 컬러 변화'],['클린 비즈니스','네이비 셔츠 재킷|화이트 셔츠|베이지 팬츠|다크브라운 로퍼','가벼운 토요일 출근'],['가벼운 산책 룩','옥스퍼드 셔츠|크림 치노|화이트 스니커즈','소매를 걷어 편안하게']]},
       '2026-10':{season:'가을 · AUTUMN',temp:'10–22°C',summary:'재킷과 니트가 가장 멋스럽게 겹쳐지는 달입니다. 올리브·초콜릿·차콜처럼 깊은 색을 네이비 기본템과 섞어 입습니다.',palette:['#23354d','#5e6545','#5a3d2e','#b5a796'],caps:['차콜 플란넬 재킷','브라운 니트 폴로','화이트 옥스퍼드 셔츠','올리브 치노','그레이 울 슬랙스','다크브라운 로퍼','얇은 메리노 가디건','체크 머플러'],trend:['브라운과 올리브를 오피스 팔레트로 활용','플란넬·스웨이드·메리노를 한 룩에 두 가지까지만','가디건은 재킷 안에 셔츠처럼 단정하게'],days:[]},
@@ -99,7 +102,7 @@
       summer:[['쿨 네이비','초경량 재킷|화이트 반팔 셔츠|그레이 슬랙스|로퍼','재킷은 실내에서만'],['니트 폴로 데이','블루 니트 폴로|네이비 경량 팬츠|로퍼','몸에 붙지 않게'],['샌드 앤드 화이트','샌드 재킷|오프화이트 셔츠|브라운 팬츠|로퍼','따뜻한 뉴트럴'],['레인 비즈니스','발수 셔츠 재킷|쿨그레이 슬랙스|러버솔 로퍼','장마철 실용 조합'],['컬러 프라이데이','민트 폴로|네이비 슬랙스|브라운 로퍼','채도는 낮게'],['원 레이어 셔츠','오픈칼라 셔츠|차콜 슬랙스|미니멀 스니커즈','셔츠 한 장도 단정하게'],['라이트 위켄드','린넨혼방 셔츠|크림 쇼츠|레더 샌들','통풍 좋은 일요일']]
     };
     function seasonFor(m){if([12,1,2].includes(m))return'winter';if([3,4,5].includes(m))return'spring';if([6,7,8].includes(m))return'summer';return'autumn'}
-    function trendAccent(month,dayIndex,isWomen){const [name,hex,menItem,womenItem]=trendAccents[seasonFor(month)][dayIndex];return{name,hex,item:`${name} ${isWomen?womenItem:menItem}`}}
+    function trendAccent(dayIndex,isWomen){const accent=trendAccents[dayIndex];return{...accent,item:isWomen?accent.women:accent.men,imagePath:`./trend-looks/${isWomen?'women':'men'}/${accent.image}.png`}}
     Object.entries(menData).forEach(([key,v])=>{if(!v.days.length)v.days=seasonalDays[seasonFor(+key.split('-')[1])].map(x=>[...x])});
     Object.entries(womenData).forEach(([key,v])=>{if(!v.days.length)v.days=womenSeasonalDays[seasonFor(+key.split('-')[1])].map(x=>[...x])});
     let currentGender='men',currentYear=2026,currentMonth=9;
@@ -111,7 +114,6 @@
       const data=currentGender==='women'?womenData:menData;
       const v=data[key];
       const isWomen=currentGender==='women';
-      const imageDir=isWomen?'looks-women':'looks';
       document.getElementById('heroImage').src=isWomen?'./women-hero.webp':'./wardrobe-editorial.png';
       document.getElementById('heroImage').alt=isWomen?'블레이저, 블라우스, 팬츠와 미디스커트로 구성한 여성 세미정장 옷장':'네이비 재킷, 셔츠, 니트, 슬랙스와 로퍼로 구성한 남성 세미정장 옷장';
       document.getElementById('heroText').textContent=isWomen?'밝은 컬러를 한 가지씩 더한 여성 월간 코디 캘린더. 블라우스·가방·스카프로 색을 가볍게 즐깁니다.':'밝은 컬러를 한 가지씩 더한 남성 월간 코디 캘린더. 니트·셔츠·작은 액세서리로 색을 가볍게 즐깁니다.';
@@ -119,7 +121,7 @@
       document.getElementById('monthTitle').textContent=`${currentYear}. ${String(currentMonth).padStart(2,'0')}`;
       document.getElementById('monthSummary').textContent=v.summary;
       document.getElementById('temp').textContent=v.temp;
-      const monthAccent=trendAccent(currentMonth,0,isWomen);
+      const monthAccent=trendAccent(0,isWomen);
       document.getElementById('palette').innerHTML=[monthAccent.hex,...v.palette.slice(0,3)].map((c,i)=>`<span class='swatch' style='background:${c}' title='팔레트 ${i+1}'></span>`).join('');
       const daysInMonth=new Date(currentYear,currentMonth,0).getDate();
       document.getElementById('weekGrid').innerHTML=Array.from({length:daysInMonth},(_,index)=>{
@@ -128,10 +130,10 @@
         const planIndex=(nativeWeekday+6)%7;
         const x=v.days[planIndex];
         const isSunday=nativeWeekday===0;
-        const accent=trendAccent(currentMonth,planIndex,isWomen);
+        const accent=trendAccent(planIndex,isWomen);
         const outfitItems=x[1].split('|');
         outfitItems.splice(1,0,accent.item);
-        return `<section class='day ${isSunday?'sunday':''}' aria-label='${currentYear}년 ${currentMonth}월 ${day}일 ${D[planIndex]}요일'><div class='day-name'><strong>${D[planIndex]}요일</strong><span class='day-index'>${String(day).padStart(2,'0')}</span></div><img class='look-image ${isWomen?'women':''}' src='./${imageDir}/${key}-${planIndex+1}.webp' alt='${currentYear}년 ${currentMonth}월 ${day}일 ${D[planIndex]}요일 ${accent.name} 포인트의 ${x[0]} ${isWomen?'여성':'남성'} 코디' loading='lazy'><div class='look'>${x[0]} · ${accent.name}</div><div class='trend-accent'><span class='color-dot' style='background:${accent.hex}'></span><span>오늘의 컬러</span><strong>${accent.name}</strong></div><ul class='items'>${outfitItems.map(z=>`<li>${z}</li>`).join('')}</ul><div class='style-note'><strong>왜 이 옷인가요?</strong>${dayReasons[planIndex]} ${accent.name} 컬러를 한 가지 더해 표정에 생기를 줍니다. ${x[2]}</div>${isSunday?'<span class="casual-tag">SUNDAY CASUAL</span>':''}</section>`;
+        return `<section class='day ${isSunday?'sunday':''}' aria-label='${currentYear}년 ${currentMonth}월 ${day}일 ${D[planIndex]}요일'><div class='day-name'><strong>${D[planIndex]}요일</strong><span class='day-index'>${String(day).padStart(2,'0')}</span></div><img class='look-image ${isWomen?'women':''}' src='${accent.imagePath}' alt='${currentYear}년 ${currentMonth}월 ${day}일 ${D[planIndex]}요일 ${accent.name} 포인트의 ${x[0]} ${isWomen?'여성':'남성'} 코디' loading='lazy'><div class='look'>${x[0]} · ${accent.name}</div><div class='trend-accent'><span class='color-dot' style='background:${accent.hex}'></span><span>오늘의 컬러</span><strong>${accent.name}</strong></div><ul class='items'>${outfitItems.map(z=>`<li>${z}</li>`).join('')}</ul><div class='style-note'><strong>왜 이 옷인가요?</strong>${dayReasons[planIndex]} ${accent.name} 컬러를 한 가지 더해 표정에 생기를 줍니다. ${x[2]}</div>${isSunday?'<span class="casual-tag">SUNDAY CASUAL</span>':''}</section>`;
       }).join('');
       document.getElementById('capsule').innerHTML=v.caps.map((x,i)=>`<div class='capsule-item'><span class='capsule-num'>${i+1}</span><span>${x}</span></div>`).join('');
       document.getElementById('trends').innerHTML=v.trend.map(x=>`<li>${x}</li>`).join('');
