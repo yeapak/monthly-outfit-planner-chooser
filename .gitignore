@@ -1,0 +1,16 @@
+# 운영체제가 자동으로 만드는 파일
+.DS_Store
+Thumbs.db
+
+# 편집기 및 임시 파일
+.vscode/
+.idea/
+*.tmp
+
+# 나중에 추가될 수 있는 개인 설정과 개발 도구 파일
+.env
+.env.*
+!.env.example
+node_modules/
+.sites-runtime/
+.openai/
